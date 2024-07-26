@@ -17,6 +17,8 @@
       <!-- Slides -->
       @foreach($slides as $slide)
         <div class="swiper-slide">
+          <p class="swiper-slide__title">{{$slide->title}}</p>
+          <p class="swiper-slide__description">{{$slide->description}}</p>
           <img class="swiper-slide__img" src="{{asset('storage/'.$slide->src)}}">
         </div>
       @endforeach
@@ -46,6 +48,22 @@ const mySwiper = new Swiper('.swiper', {
     width: 100vw;
     height: 100vh;
     object-fit: contain;
+  }
+  .swiper-slide__title{
+    position: absolute;
+    background-color: orange;
+    left: min(10%, 200px);
+    top: min(10%, 50px);
+    font-size: 50px;
+    margin: 0;
+  }
+  .swiper-slide__description{
+    position: absolute;
+    background-color: orange;
+    right: min(10%, 200px);
+    bottom: min(10%, 50px);
+    font-size: 30px;
+    margin: 0;
   }
 </style>
 </body>
