@@ -19,5 +19,6 @@ Route::get('/', function () {
 
 Route::get('admin/register',[SlideController::class, 'register']);
 Route::post('admin/register',[SlideController::class, 'register']);
+Route::post('admin/update',[SlideController::class, 'update']);
 Route::get('admin/',[SlideController::class, 'index']);
 Route::get('/',[SlideController::class, 'show']);

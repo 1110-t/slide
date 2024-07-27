@@ -1,0 +1,15 @@
+.register{
+  width:50%;
+}
+
+.card-img-top {
+  height: 200px; /* 例えば200pxに固定 */
+  object-fit: cover; /* 画像を切り抜いて表示 */
+}
+
+.card-text,.card-title{
+  display: block;
+  background-color: unset;
+  border: unset;
+  width:100%;
+}

@@ -11,7 +11,8 @@ class SlideController extends Controller
     public function register(Request $request){
       // getの場合フォームを表示
       if($request -> isMethod("get")){
-        return view('slide/register');
+        $slides = Slide::all();
+        return view('slide/register',compact('slides'));
       // postの場合データベースへ登録
       } else {
         $slide = new Slide();
@@ -21,7 +22,23 @@ class SlideController extends Controller
         $filename = str_replace('public/', '', $filename);
         $slide->src = $filename;
         $slide->save();
+        $slides = Slide::all();
+        return view('slide/register',compact('slides'));
       }
+    }
+    // 更新処理
+    public function update(Request $request){
+      $slide = Slide::findOrFail($request->id); // IDに基づいて対象のレコードを取得
+      $slide->title = $request->title;
+      $slide->description = $request->description;
+      if($request->file('src') != null){
+        $filename = $request->file('src')->store('public');
+        $filename = str_replace('public/', '', $filename);
+        $slide->src = $filename;
+      };
+      $slide->save();
+      $slides = Slide::all();
+      return view('slide/register',compact('slides'));
     }
     // 一覧表示
     public function index(){
